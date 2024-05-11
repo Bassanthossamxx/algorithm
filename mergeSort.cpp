@@ -135,3 +135,59 @@ int main() {
 
     return 0;
 }
+//3- merge Sort for array of chars :
+#include <iostream>
+#include <cstring>
+
+using namespace std;
+
+void merge(char arr[], int i, int k, int j) {
+    int l = i;
+    int m = k + 1;
+    int t = i;
+    char *B = new char[j - i + 1]; // size of B = j - i + 1
+
+    while (l <= k || m <= j) {
+        if (l > k) {
+            B[t - i] = arr[m];
+            m++;
+        } else if (m > j) {
+            B[t - i] = arr[l];
+            l++;
+        } else if (arr[l] > arr[m]) {
+            B[t - i] = arr[m];
+            m++;
+        } else {
+            B[t - i] = arr[l];
+            l++;
+        }
+        t++;
+    }
+
+    for (int t = i; t <= j; t++) {
+        arr[t] = B[t - i];
+    }
+
+    delete[] B;
+}
+
+void mergesort(char arr[], int s, int e) {
+    if (s >= e)
+        return;
+    int mid = (s + e) / 2;
+    mergesort(arr, s, mid);
+    mergesort(arr, mid + 1, e);
+    merge(arr, s, mid, e);
+}
+
+int main() {
+    char arr[] = "cbaedgf";
+    int size = strlen(arr);
+    mergesort(arr, 0, size - 1);
+
+    for (int i = 0; i < size; i++)
+        cout << arr[i];
+
+    return 0;
+}
+
