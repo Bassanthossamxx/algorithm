@@ -4,14 +4,19 @@
 using namespace std;
 
 void insertionSort(int arr[], int n) {
+    //we use key to right part "unsorted"
     int key, j;
     for (int i = 1; i < n; i++) {
         key = arr[i];
+        //we use j for left part "sorted"
         j = i - 1;
         while (j >= 0 && arr[j] > key) {
+            //swap the small element with greater to sort it
             arr[j + 1] = arr[j];
+            //back to normal
             j = j - 1;
         }
+        //move to next element
         arr[j + 1] = key;
     }
 }
