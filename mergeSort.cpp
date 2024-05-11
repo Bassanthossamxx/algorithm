@@ -1,4 +1,5 @@
 //merge sort :
+//1- merge Sort for array of numbers :
 #include<iostream>
 using namespace std;
 // if arr is {2,3,8,9,1,4,5,7}  like presenation slide 12 
@@ -81,6 +82,56 @@ void main()
 
 	for(int i=0;i<size;i++)
 		cout<<arr[i]<<"  ";
+}
+//2- Merge sort for string :
+#include <iostream>
+#include <string>
 
-	system("pause");
+using namespace std;
+
+void merge(string &arr, int i, int k, int j) {
+    int l = i;
+    int m = k + 1;
+    int t = i;
+    string B;
+
+    while (l <= k || m <= j) {
+        if (l > k) {
+            B += arr[m];
+            m++;
+        } else if (m > j) {
+            B += arr[l];
+            l++;
+        } else if (arr[l] > arr[m]) {
+            B += arr[m];
+            m++;
+        } else {
+            B += arr[l];
+            l++;
+        }
+        t++;
+    }
+
+    for (int t = i; t <= j; t++) {
+        arr[t] = B[t - i];
+    }
+}
+
+void mergesort(string &arr, int s, int e) {
+    if (s >= e)
+        return;
+    int mid = (s + e) / 2;
+    mergesort(arr, s, mid);
+    mergesort(arr, mid + 1, e);
+    merge(arr, s, mid, e);
+}
+
+int main() {
+    string arr = "cbaedgf";
+    int size = arr.length();
+    mergesort(arr, 0, size - 1);
+
+    cout << arr;
+
+    return 0;
 }
