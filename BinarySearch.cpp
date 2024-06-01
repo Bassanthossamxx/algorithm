@@ -5,7 +5,7 @@ int binS(int arr[],int high,int k,int low = 0)
 	
 	while(low<=high)
 	{
-		int m = (low+high)/2;
+		int m = low+(high-low)/2;
 		if(arr[m]==k)
 			return m;
 		else if(arr[m]>k)
