@@ -23,7 +23,7 @@ using namespace std;
 
 int binS(const string& str, char k, int high, int low = 0) {
     while (low <= high) {
-        int m = (low + high) / 2;
+    int m = low+(high-low)/2;
         if (str[m] == k)
             return m;
         else if (str[m] > k)
@@ -53,7 +53,7 @@ int binSR(int arr[],int high,int k,int low = 0)
 {
 	if(low<=high)
 	{
-		int m = (low+high)/2;
+		int m = low+(high-low)/2;
 		if(arr[m]==k)
 			return m;
 		else if(arr[m]>k)
@@ -71,7 +71,7 @@ using namespace std;
 
 int binSR(string str, char k, int high, int low = 0) {
     if (low <= high) {
-        int m = (low + high) / 2;
+      int m = low+(high-low)/2;
         if (str[m] == k)
             return m;
         else if (str[m] > k)
